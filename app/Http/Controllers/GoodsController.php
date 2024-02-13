@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Goods;
+use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -65,14 +66,21 @@ class GoodsController extends Controller
             ], 404);
         }
     }
-    // 商品一覧と画像URLを結合して取得
+    // 商品一覧と画像を取得
     public function get()
     {
-        $items = DB::table('goods')
-            ->join('images', 'images.goods_id', '=', 'goods.id')
-            ->get();
+        $items = Goods::all();
+        foreach ($items as $item){
+            $param = ['id' => $item -> id];
+            $images =  DB::select('select url from images where goods_id = :id',$param);
+            $urls = array();
+            foreach ($images as $image){
+                $urls[] = $image -> url;
+            }
+            $item['urls'] =$urls;
+        }
         return response()->json([
-        'data' => $items
+        'data' => $items,
         ], 200);
     }
 }
