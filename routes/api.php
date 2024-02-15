@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\GoodsController;
-
+use App\http\Controllers\ImageController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,8 +15,10 @@ use App\http\Controllers\GoodsController;
 |
 */
 
-Route::apiResource('/goods', GoodsController::class);
+//Route::apiResource('/goods', GoodsController::class);
 Route::get('/goods_all', [GoodsController::class, 'get']);
+Route::get('/goods/{id}', [GoodsController::class, 'getbyId']);
+Route::get('/image/{id}', [ImageController::class, 'getbyGoodsId']);
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });

@@ -9,63 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class GoodsController extends Controller
 {
-    public function index()
-    {
-        $items = Goods::all();
-        return response()->json([
-        'data' => $items
-        ], 200);
-    }
-    public function store(Request $request)
-    {
-        $item = Goods::create($request->all());
-        return response()->json([
-        'data' => $item
-        ], 201);
-    }
-    public function show(Contact $goods)
-    {
-        $item = Goods::find($goods);
-        if ($item) {
-            return response()->json([
-            'data' => $item
-            ], 200);
-        } else {
-            return response()->json([
-            'message' => 'Not found',
-            ], 404);
-        }
-    }
-    public function update(Request $request, Goods $goods)
-    {
-        $update = [
-        'name' => $request->name,
-        'email' => $request->email
-        ];
-        $item = Goods::where('id', $goods->id)->update($update);
-        if ($item) {
-            return response()->json([
-            'message' => 'Updated successfully',
-            ], 200);
-        } else {
-            return response()->json([
-            'message' => 'Not found',
-            ], 404);
-        }
-    }
-    public function destroy(Goods $goods)
-    {
-        $item = Goods::where('id', $goods->id)->delete();
-        if ($item) {
-            return response()->json([
-            'message' => 'Deleted successfully',
-            ], 200);
-        } else {
-            return response()->json([
-            'message' => 'Not found',
-            ], 404);
-        }
-    }
     // 商品一覧と画像を取得
     public function get()
     {
@@ -82,5 +25,17 @@ class GoodsController extends Controller
         return response()->json([
         'data' => $items,
         ], 200);
+    }
+    // 商品一覧をidで取得
+    public function getbyId(Request $request)
+    {
+        $item = Goods::where('id','=',$request->id)->get();
+        if ($item) {
+            // データが見つかった場合の処理
+            return response()->json(['data' => $item], 200);
+        } else {
+            // データが見つからなかった場合の処理
+            return response()->json(['message' => 'Data not found'], 405);
+        }
     }
 }

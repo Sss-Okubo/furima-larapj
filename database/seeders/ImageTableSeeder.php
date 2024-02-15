@@ -74,5 +74,11 @@ class ImageTableSeeder extends Seeder
         'url'=> '/image/image10.jpg'
         ];
         Image::create($param);
+
+        $param = [
+        'goods_id' => 2,
+        'url'=> '/image/image11.jpg'
+        ];
+        Image::create($param);
     }
 }
