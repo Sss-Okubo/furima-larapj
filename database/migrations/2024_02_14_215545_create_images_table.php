@@ -17,7 +17,8 @@ class CreateImagesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('goods_id');           
             $table->string('url');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent()->nullable();
+            $table->timestamp('updated_at')->useCurrent()->nullable();
         });
     }
 
