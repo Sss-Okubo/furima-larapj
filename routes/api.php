@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\http\Controllers\GoodsController;
 use App\http\Controllers\ImageController;
 use App\http\Controllers\LikeController;
+use App\http\Controllers\CommentController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,14 +17,17 @@ use App\http\Controllers\LikeController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-//Route::apiResource('/goods', GoodsController::class);
+// 商品API
 Route::get('/goods_all', [GoodsController::class, 'get']);
 Route::get('/goods/{id}', [GoodsController::class, 'getbyId']);
+// 画像API
 Route::get('/image/{id}', [ImageController::class, 'getbyGoodsId']);
+// お気に入りAPI
 Route::get('/likes/{goods_id}/{user_id}', [LikeController::class, 'get']);
 Route::apiResource('/likes', LikeController::class);
 Route::delete('/likes/{goods_id}/{user_id}', [LikeController::class, 'destroy']);
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+// コメントAPI
+Route::get('/comments/{goods_id}', [CommentController::class, 'get']);
+Route::apiResource('/comments', CommentController::class);
+Route::delete('/comments/{goods_id}/{user_id}', [CommentController::class, 'destroy']);
+
