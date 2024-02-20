@@ -18,7 +18,7 @@ class CreateGoodsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('goods_name');
             $table->unsignedBigInteger('price');
-            $table->string('summary');
+            $table->string('condition');
             $table->string('detail');
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
