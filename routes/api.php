@@ -35,3 +35,4 @@ Route::delete('/comments/{goods_id}/{user_id}', [CommentController::class, 'dest
 Route::get('/categories/{goods_id}', [CategoryController::class, 'get']);
 // ユーザAPI
 Route::get('/users/{uid}', [UserController::class, 'getbyUid']);
+Route::apiResource('/users', UserController::class);
