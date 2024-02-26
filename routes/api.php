@@ -7,7 +7,7 @@ use App\http\Controllers\ImageController;
 use App\http\Controllers\LikeController;
 use App\http\Controllers\CommentController;
 use App\http\Controllers\CategoryController;
-
+use App\http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -33,3 +33,5 @@ Route::apiResource('/comments', CommentController::class);
 Route::delete('/comments/{goods_id}/{user_id}', [CommentController::class, 'destroy']);
 // カテゴリAPI
 Route::get('/categories/{goods_id}', [CategoryController::class, 'get']);
+// ユーザAPI
+Route::get('/users/{uid}', [UserController::class, 'getbyUid']);
