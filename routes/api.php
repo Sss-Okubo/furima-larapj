@@ -21,6 +21,7 @@ use App\http\Controllers\UserController;
 // 商品API
 Route::get('/goods_all', [GoodsController::class, 'get']);
 Route::get('/goods/{id}', [GoodsController::class, 'getbyId']);
+Route::get('/goods/getMylist/{loginUserId}', [GoodsController::class, 'getMylist']);
 // 画像API
 Route::get('/image/{id}', [ImageController::class, 'getbyGoodsId']);
 // お気に入りAPI
