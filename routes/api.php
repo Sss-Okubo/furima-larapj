@@ -37,3 +37,4 @@ Route::get('/categories/{goods_id}', [CategoryController::class, 'get']);
 // ユーザAPI
 Route::get('/users/{uid}', [UserController::class, 'getbyUid']);
 Route::apiResource('/users', UserController::class);
+Route::get('/usersByid/{id}', [UserController::class, 'getbyId']);
