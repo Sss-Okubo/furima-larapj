@@ -8,6 +8,7 @@ use App\http\Controllers\LikeController;
 use App\http\Controllers\CommentController;
 use App\http\Controllers\CategoryController;
 use App\http\Controllers\UserController;
+use App\http\Controllers\PurchaseController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -38,3 +39,5 @@ Route::get('/categories/{goods_id}', [CategoryController::class, 'get']);
 Route::get('/users/{uid}', [UserController::class, 'getbyUid']);
 Route::apiResource('/users', UserController::class);
 Route::get('/usersByid/{id}', [UserController::class, 'getbyId']);
+// 購入API
+Route::apiResource('/purchase', PurchaseController::class);
