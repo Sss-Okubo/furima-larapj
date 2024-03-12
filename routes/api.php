@@ -23,6 +23,9 @@ use App\http\Controllers\PurchaseController;
 Route::get('/goods_all', [GoodsController::class, 'get']);
 Route::get('/goods/{id}', [GoodsController::class, 'getbyId']);
 Route::get('/goods/getMylist/{loginUserId}', [GoodsController::class, 'getMylist']);
+Route::get('/goods/getMySellList/{loginUserId}', [GoodsController::class, 'getMySellList']);
+Route::get('/goods/getMyBuyList/{loginUserId}', [GoodsController::class, 'getMyBuyList']);
+
 // 画像API
 Route::get('/image/{id}', [ImageController::class, 'getbyGoodsId']);
 // お気に入りAPI
