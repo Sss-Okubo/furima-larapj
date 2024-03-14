@@ -18,8 +18,10 @@ class CreateUsersTable extends Migration
             $table->string('uid')->unique();            
             $table->string('email')->unique();            
             $table->string('name')->nullable();
-            $table->string('address')->nullable();
+            $table->string('address1')->nullable();
+            $table->string('address2')->nullable();
             $table->string('postno')->nullable();
+            $table->string('url')->nullable();
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
         });
