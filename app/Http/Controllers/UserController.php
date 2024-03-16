@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 
 class UserController extends Controller
@@ -39,5 +40,23 @@ class UserController extends Controller
         return response()->json([
             'data' => $item
             ], 201);
+    }
+
+    public function uploadImage(Request $request)
+    {
+        if ($request->hasFile('file')) {
+            $image = $request->file('file');
+            $imageName = time().'.'.$image->getClientOriginalExtension();
+
+            // S3に画像を保存
+            $path = Storage::disk('s3')->putFileAs('images', $image, $imageName);
+
+            // 保存された画像のURLを取得
+            $url = Storage::disk('s3')->url($path);
+
+            return response()->json(['url' => $url], 200);
+        }
+
+        return response()->json(['error' => 'Image not found.'], 400);
     }
 }

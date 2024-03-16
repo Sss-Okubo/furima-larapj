@@ -42,5 +42,7 @@ Route::get('/categories/{goods_id}', [CategoryController::class, 'get']);
 Route::get('/users/{uid}', [UserController::class, 'getbyUid']);
 Route::apiResource('/users', UserController::class);
 Route::get('/usersByid/{id}', [UserController::class, 'getbyId']);
+Route::post('/users/upload', [UserController::class, 'uploadImage']);
+
 // 購入API
 Route::apiResource('/purchase', PurchaseController::class);
