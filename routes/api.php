@@ -43,6 +43,7 @@ Route::get('/users/{uid}', [UserController::class, 'getbyUid']);
 Route::apiResource('/users', UserController::class);
 Route::get('/usersByid/{id}', [UserController::class, 'getbyId']);
 Route::post('/users/upload', [UserController::class, 'uploadImage']);
+Route::post('/users/update', [UserController::class,'update']);
 
 // 購入API
 Route::apiResource('/purchase', PurchaseController::class);

@@ -42,6 +42,7 @@ class UserController extends Controller
             ], 201);
     }
 
+    // プロフィール画像をアップロード
     public function uploadImage(Request $request)
     {
         if ($request->hasFile('file')) {
@@ -58,5 +59,26 @@ class UserController extends Controller
         }
 
         return response()->json(['error' => 'Image not found.'], 400);
+    }
+
+    public function update(Request $request)
+    {
+        $update = [
+            'name' => $request->name,
+            'postno' => $request->postno,
+            'address1' => $request->address1,
+            'address2' => $request->address2,
+            'url' => $request->url,
+        ];
+        $item = User::where('id', $request->id)->update($update);
+        if ($item) {
+            return response()->json([
+                'message' => 'Updated successfully',
+            ], 200);
+        } else {
+            return response()->json([
+                'message' => 'Not found',
+            ], 404);
+        }
     }
 }
