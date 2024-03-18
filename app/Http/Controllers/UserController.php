@@ -68,8 +68,11 @@ class UserController extends Controller
             'postno' => $request->postno,
             'address1' => $request->address1,
             'address2' => $request->address2,
-            'url' => $request->url,
         ];
+        if($request->url){
+            $update['url'] = $request->url;
+        }
+        
         $item = User::where('id', $request->id)->update($update);
         if ($item) {
             return response()->json([
