@@ -9,6 +9,7 @@ use App\http\Controllers\CommentController;
 use App\http\Controllers\CategoryController;
 use App\http\Controllers\UserController;
 use App\http\Controllers\PurchaseController;
+use App\http\Controllers\CodeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,16 +29,20 @@ Route::get('/goods/getMyBuyList/{loginUserId}', [GoodsController::class, 'getMyB
 
 // 画像API
 Route::get('/image/{id}', [ImageController::class, 'getbyGoodsId']);
+
 // お気に入りAPI
 Route::get('/likes/{goods_id}/{user_id}', [LikeController::class, 'get']);
 Route::apiResource('/likes', LikeController::class);
 Route::delete('/likes/{goods_id}/{user_id}', [LikeController::class, 'destroy']);
+
 // コメントAPI
 Route::get('/comments/{goods_id}', [CommentController::class, 'get']);
 Route::apiResource('/comments', CommentController::class);
 Route::delete('/comments/{goods_id}/{user_id}', [CommentController::class, 'destroy']);
+
 // カテゴリAPI
 Route::get('/categories/{goods_id}', [CategoryController::class, 'get']);
+
 // ユーザAPI
 Route::get('/users/{uid}', [UserController::class, 'getbyUid']);
 Route::apiResource('/users', UserController::class);
@@ -47,3 +52,6 @@ Route::post('/users/update', [UserController::class,'update']);
 
 // 購入API
 Route::apiResource('/purchase', PurchaseController::class);
+
+// コードAPI
+Route::get('/codes/{type}', [CodeController::class, 'get']);
