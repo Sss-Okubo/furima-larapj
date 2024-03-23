@@ -38,8 +38,7 @@ class CommentController extends Controller
     public function get($goods_id)
     {
         $Param = ['goods_id' => $goods_id ]; 
-        $commentInfo =  DB::select('select *  from comments where goods_id = :goods_id',$Param);  
-        
+        $commentInfo =  DB::select('select a.*,b.url from comments a left outer join users b on a.user_id = b.id where goods_id = :goods_id',$Param);
         // Response
         return response()->json(['data' => $commentInfo], 200);
     }

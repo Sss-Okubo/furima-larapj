@@ -86,7 +86,12 @@ class GoodsController extends Controller
     // 商品一覧をidで取得
     public function getbyId(Request $request)
     {
-        $item = Goods::where('id','=',$request->id)->get();
+        $param = ['id' => $request->id ,'type' => "2" ];
+        $item = DB::select('select
+                            a.id,user_id,goods_name,price,b.value,detail 
+                            from goods a left outer join codes b  on a.condition = b.code and b.type= :type 
+                            where a.id = :id'
+                            ,$param);
         if ($item) {
             // データが見つかった場合の処理
             return response()->json

@@ -11,9 +11,9 @@ class CategoryController extends Controller
     // カテゴリ取得
     public function get($goods_id)
     {
-        $Param = ['goods_id' => $goods_id ]; 
-        $categoryInfo =  DB::select('select *  from categories where goods_id = :goods_id',$Param);  
-        
+        $Param = ['goods_id' => $goods_id, 'type' => "1" ]; 
+        $categoryInfo =  DB::select('select b.value from categories a left outer join codes b  on a.category = b.code and b.type= :type where goods_id = :goods_id',$Param);  
+
         // Response
         return response()->json(['data' => $categoryInfo], 200);
     }
