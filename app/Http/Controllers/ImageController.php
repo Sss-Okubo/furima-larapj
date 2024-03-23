@@ -19,4 +19,12 @@ class ImageController extends Controller
             return response()->json(['message' => 'Data not found'], 405);
         }
     }
+
+    // 画像登録
+    public function store(Request $request)
+    {
+        $item = Image::create($request->all());
+        return response()->json([
+            'data' =>$item], 201);
+    }
 }

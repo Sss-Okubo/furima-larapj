@@ -26,9 +26,11 @@ Route::get('/goods/{id}', [GoodsController::class, 'getbyId']);
 Route::get('/goods/getMylist/{loginUserId}', [GoodsController::class, 'getMylist']);
 Route::get('/goods/getMySellList/{loginUserId}', [GoodsController::class, 'getMySellList']);
 Route::get('/goods/getMyBuyList/{loginUserId}', [GoodsController::class, 'getMyBuyList']);
+Route::apiResource('/goods', GoodsController::class);
 
 // 画像API
 Route::get('/image/{id}', [ImageController::class, 'getbyGoodsId']);
+Route::apiResource('/images', ImageController::class);
 
 // お気に入りAPI
 Route::get('/likes/{goods_id}/{user_id}', [LikeController::class, 'get']);
@@ -42,6 +44,7 @@ Route::delete('/comments/{goods_id}/{user_id}', [CommentController::class, 'dest
 
 // カテゴリAPI
 Route::get('/categories/{goods_id}', [CategoryController::class, 'get']);
+Route::apiResource('/categories', CategoryController::class);
 
 // ユーザAPI
 Route::get('/users/{uid}', [UserController::class, 'getbyUid']);

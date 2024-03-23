@@ -96,4 +96,13 @@ class GoodsController extends Controller
             return response()->json(['message' => 'Data not found'], 405);
         }
     }
+
+    // 商品登録
+    public function store(Request $request)
+    {
+        $item = Goods::create($request->all());
+        return response()->json([
+            'id' =>$item->id], 201);
+    }
+
 }

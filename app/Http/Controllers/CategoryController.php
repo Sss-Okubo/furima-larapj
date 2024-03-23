@@ -8,7 +8,7 @@ use App\Models\Category;
 
 class CategoryController extends Controller
 {
-    // コメント情報取得
+    // カテゴリ取得
     public function get($goods_id)
     {
         $Param = ['goods_id' => $goods_id ]; 
@@ -18,4 +18,11 @@ class CategoryController extends Controller
         return response()->json(['data' => $categoryInfo], 200);
     }
 
+    // カテゴリ登録
+    public function store(Request $request)
+    {
+        $item = Category::create($request->all());
+        return response()->json([
+            'data' =>$item], 201);
+    }
 }
