@@ -40,7 +40,8 @@ Route::delete('/likes/{goods_id}/{user_id}', [LikeController::class, 'destroy'])
 // コメントAPI
 Route::get('/comments/{goods_id}', [CommentController::class, 'get']);
 Route::apiResource('/comments', CommentController::class);
-Route::delete('/comments/{goods_id}/{user_id}', [CommentController::class, 'destroy']);
+Route::delete('/comments/{id}', [CommentController::class, 'destroy']);
+
 
 // カテゴリAPI
 Route::get('/categories/{goods_id}', [CategoryController::class, 'get']);

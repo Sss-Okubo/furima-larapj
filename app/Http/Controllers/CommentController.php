@@ -18,11 +18,10 @@ class CommentController extends Controller
     }
 
     // コメント削除
-    public function destroy($goods_id, $user_id)
+        public function destroy($id)
     {
         // goods_idとuser_idが一致するレコードを削除する
-        $deleted = Comment::where('goods_id', $goods_id)
-                        ->where('user_id', $user_id)
+        $deleted = Comment::where('id', $id)
                         ->delete();
         if ($deleted) {
             return response()->json([
@@ -34,6 +33,7 @@ class CommentController extends Controller
             ], 404);
         }
     }
+
     // コメント情報取得
     public function get($goods_id)
     {
