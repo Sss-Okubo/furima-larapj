@@ -27,6 +27,7 @@ Route::get('/goods/getMylist/{loginUserId}', [GoodsController::class, 'getMylist
 Route::get('/goods/getMySellList/{loginUserId}', [GoodsController::class, 'getMySellList']);
 Route::get('/goods/getMyBuyList/{loginUserId}', [GoodsController::class, 'getMyBuyList']);
 Route::apiResource('/goods', GoodsController::class);
+Route::get('/goods/getSearchList/{searchWord}', [GoodsController::class, 'getSearchList']);
 
 // 画像API
 Route::get('/image/{id}', [ImageController::class, 'getbyGoodsId']);

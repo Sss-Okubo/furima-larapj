@@ -110,4 +110,24 @@ class GoodsController extends Controller
             'id' =>$item->id], 201);
     }
 
+        // 検索ワードから商品一覧と画像を取得
+    public function getSearchList(Request $request)
+    {
+        $searchWord = '%' . $request->searchWord . '%';
+        $items = DB::select('select * from goods where goods_name like ? or detail like ?', [$searchWord,$searchWord]);
+        foreach ($items as $item){
+            $param = ['id' => $item -> id];
+            $images =  DB::select('select url from images where goods_id = :id',$param);
+            $urls = array();
+            foreach ($images as $image){
+                $urls[] = $image -> url;
+            }
+            $item ->urls = $urls;
+        }
+        return response()->json([
+        'data' => $items,
+        ], 200);
+    }
+
+
 }
