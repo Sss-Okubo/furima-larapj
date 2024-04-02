@@ -2,14 +2,14 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\http\Controllers\GoodsController;
-use App\http\Controllers\ImageController;
-use App\http\Controllers\LikeController;
-use App\http\Controllers\CommentController;
-use App\http\Controllers\CategoryController;
-use App\http\Controllers\UserController;
-use App\http\Controllers\PurchaseController;
-use App\http\Controllers\CodeController;
+use App\Http\Controllers\GoodsController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\CodeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
